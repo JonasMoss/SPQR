@@ -50,6 +50,7 @@ devtools::install_github("JonasMoss/SPQR")
 The `R` function can be used for simulations in this way.
 
 ```{r R-data-frame-good, echo = TRUE}
+library("SPQR")
 n = 100
 sim = R(data.frame(y = 5 + 3*x1 + 6*x2 + rnorm(n),
                   x1 = rnorm(n),

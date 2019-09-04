@@ -1,4 +1,12 @@
-R = function(call, .quote = TRUE) {
+#' Allow recursive argmuments in function calls
+#'
+#' @export
+#' @param .call A call with potentially recursive arguments.
+#' @param .quote Logical; Is the call quoted?
+#' @return An evaluated call.
+
+R = function(.call, .quote = TRUE) {
+
   .call = if(.quote) substitute(.call) else .call
 
   fn = deparse(.call[[1]])
@@ -18,11 +26,22 @@ R = function(call, .quote = TRUE) {
 
   }
 
+  is_locked = bindingIsLocked(fn, enclosing_env)
+
+  if(is_locked) {
+    do_call(unlockBinding, .args = list(fn, enclosing_env))
+  }
+
   environment(enclosing_env[[fn]]) = new_env
 
   on.exit({
     environment(enclosing_env[[fn]]) = defining_env
+
+    if(is_locked) {
+      do_call(lockBinding, .args = list(fn, enclosing_env))
+    }
+
   })
 
-  eval(call, calling_env)
+  eval(.call, calling_env)
 }

@@ -5,6 +5,7 @@
 #' pre-specified. This function allows you to make a partially applied function
 #' directly from a partial function call.
 #'
+#' @export
 #' @param .call A partial function call.
 #' @param .quote Logical; If \code{TRUE}, the call is quoted.
 #' @return A function.
