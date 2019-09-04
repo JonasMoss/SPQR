@@ -10,7 +10,6 @@
 #' its default arguments in its enclosing context, where the supplied values are
 #' unlikely to exist.
 #'
-#' @import stats, graphics
 #' @export
 #' @param .call A call object.
 #' @param .quote Logical; If \code{TRUE}, quotes the \code{call} argument.
@@ -21,7 +20,7 @@
 #' @return A new closure.
 #' @examples
 #'    ## Play around with normals.
-#'    dnorm2 = Q(dnorm(mean = 1, sd = 2))
+#'    \dontrun{dnorm2 = Q(dnorm(mean = 1, sd = 2))
 #'    dnorm2(1) == dnorm(1, mean = 1, sd = 2)
 #'    z = 1
 #'    dnorm3 = Q(dnorm(mean = z, sd = 2))
@@ -29,7 +28,7 @@
 #'
 #'    ## Change plot.default to use type = "l" and lwd = 1.5 as default
 #'    plot.default = Q(plot.default(type = "l"))
-#'    par("lwd" = 1.5)
+#'    par("lwd" = 1.5)}
 #'
 #'    ## Automatically add x to plots.
 #'

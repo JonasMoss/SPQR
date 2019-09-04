@@ -6,6 +6,11 @@
 \usage{
 call_uses_name(call, name)
 }
+\arguments{
+\item{call}{A call.}
+
+\item{name}{A name.}
+}
 \description{
 Checks if a call references a name.
 }

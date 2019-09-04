@@ -1,8 +1,8 @@
-R = function(call, quote = TRUE) {
-  call = if(quote) substitute(call) else call
+R = function(call, .quote = TRUE) {
+  .call = if(.quote) substitute(.call) else .call
 
-  fn = deparse(call[[1]])
-  args = as.list(call[-1])
+  fn = deparse(.call[[1]])
+  args = as.list(.call[-1])
 
   calling_env   = parent.frame()
   enclosing_env = where(fn, env = calling_env)
@@ -18,12 +18,10 @@ R = function(call, quote = TRUE) {
 
   }
 
-  unlockBinding(fn, enclosing_env)
   environment(enclosing_env[[fn]]) = new_env
 
   on.exit({
     environment(enclosing_env[[fn]]) = defining_env
-    #lockBinding(fn, enclosing_env)
   })
 
   eval(call, calling_env)

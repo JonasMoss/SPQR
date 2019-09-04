@@ -34,7 +34,7 @@ unlikely to exist.
 }
 \examples{
    ## Play around with normals.
-   dnorm2 = Q(dnorm(mean = 1, sd = 2))
+   \dontrun{dnorm2 = Q(dnorm(mean = 1, sd = 2))
    dnorm2(1) == dnorm(1, mean = 1, sd = 2)
    z = 1
    dnorm3 = Q(dnorm(mean = z, sd = 2))
@@ -42,7 +42,7 @@ unlikely to exist.
 
    ## Change plot.default to use type = "l" and lwd = 1.5 as default
    plot.default = Q(plot.default(type = "l"))
-   par("lwd" = 1.5)
+   par("lwd" = 1.5)}
 
    ## Automatically add x to plots.
 

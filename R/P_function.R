@@ -9,7 +9,7 @@
 #' @param .quote Logical; If \code{TRUE}, the call is quoted.
 #' @return A function.
 
-P = function(call, .quote = TRUE) {
+P = function(.call, .quote = TRUE) {
 
   f_call = if(.quote) substitute(.call) else .call
 

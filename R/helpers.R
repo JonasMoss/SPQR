@@ -1,4 +1,7 @@
 #' Checks if a call references a name.
+#'
+#' @param call A call.
+#' @param name A name.
 
 call_uses_name = function(call, name) {
 
@@ -16,6 +19,10 @@ call_uses_name = function(call, name) {
 }
 
 #' Checks if all the arguments of a call are bound.
+#'
+#' @param call A call.
+#' @param env An environment.
+#' @return e
 
 arguments_available = function(call, env = parent.frame()) {
 

@@ -4,12 +4,12 @@
 \alias{P}
 \title{Create a function from an partial function call}
 \usage{
-P(call, .quote = TRUE)
+P(.call, .quote = TRUE)
 }
 \arguments{
-\item{.quote}{Logical; If \code{TRUE}, the call is quoted.}
-
 \item{.call}{A partial function call.}
+
+\item{.quote}{Logical; If \code{TRUE}, the call is quoted.}
 }
 \value{
 A function.

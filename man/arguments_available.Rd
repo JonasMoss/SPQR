@@ -6,6 +6,14 @@
 \usage{
 arguments_available(call, env = parent.frame())
 }
+\arguments{
+\item{call}{A call.}
+
+\item{env}{An environment.}
+}
+\value{
+e
+}
 \description{
 Checks if all the arguments of a call are bound.
 }

@@ -40,13 +40,10 @@ S = function(call, env = parent.frame(), quote = TRUE) {
   calling_env   = parent.frame()
   enclosing_env = where(fn, env = calling_env)
   defining_env  = environment(enclosing_env[[fn]])
-
-  unlockBinding(fn, enclosing_env)
   environment(enclosing_env[[fn]]) = env
 
   on.exit({
     environment(enclosing_env[[fn]]) = defining_env
-    lockBinding(fn, enclosing_env)
   })
 
   eval(call, calling_env)
