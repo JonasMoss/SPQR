@@ -5,13 +5,13 @@
 #' pre-specified. This function allows you to make a partially applied function
 #' directly from a partial function call.
 #'
-#' @param call A partial function call.
-#' @param quote Logical; If \code{TRUE}, the call is quoted.
+#' @param .call A partial function call.
+#' @param .quote Logical; If \code{TRUE}, the call is quoted.
 #' @return A function.
 
-P = function(call, quote = TRUE) {
+P = function(call, .quote = TRUE) {
 
-  f_call      = if(quote) substitute(call) else call
+  f_call = if(.quote) substitute(.call) else .call
 
   if(!is.call(f_call)) {
     msg = paste0("The 'call' argument must be an object of class 'call'. Got ",
@@ -20,7 +20,7 @@ P = function(call, quote = TRUE) {
   }
 
   f_name      = f_call[[1]]
-  f_object    = getFunction(deparse(f_name))
+  f_object    = methods::getFunction(deparse(f_name))
   f_arguments = as.list(match.call(f_object, f_call)[-1])
   f_formals   = formals(f_object)
 

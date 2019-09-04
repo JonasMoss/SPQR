@@ -1,12 +1,15 @@
 Package: SPQR
 Type: Package
-Title: Govern your function calls with SPQR.
+Title: Govern your function calls with SPQR
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: This package contains four functions 
+Author: Jonas Moss
+Maintainer: Jonas Moss <jonas.gjertsen@gmail.com>
+Description: This package contains four functions S, P, Q, R that manipulates
+   calls. 
 License: MIT + file LICENSE
-Imports: rlang
+Imports: rlang,
+         methods
 Encoding: UTF-8
 LazyData: true
 Suggests: testthat
+RoxygenNote: 6.1.1

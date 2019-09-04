@@ -10,7 +10,8 @@
 #' its default arguments in its enclosing context, where the supplied values are
 #' unlikely to exist.
 #'
-#' @param call A call object.
+#' @export
+#' @param .call A call object.
 #' @param .quote Logical; If \code{TRUE}, quotes the \code{call} argument.
 #' @param .force Logical; If \code{TRUE}, the arguments in the partial call are
 #' forced.
@@ -34,25 +35,25 @@
 #'
 
 
-Q = function(call, quote = TRUE, .force = TRUE, .enclos = NULL) {
+Q = function(.call, .quote = TRUE, .force = TRUE, .enclos = NULL) {
 
-  call = if(quote) substitute(call) else call
+  .call = if(.quote) substitute(.call) else .call
 
-  if(!is.call(call)) {
-    msg = paste0("The 'call' argument must be an object of class 'call'. Got ",
-                 "an object of class '", class(call)[1], "'.")
+  if(!is.call(.call)) {
+    msg = paste0("The '.call' argument must be an object of class 'call'. Got ",
+                 "an object of class '", class(.call)[1], "'.")
     stop(msg)
   }
 
-  name = deparse(call[[1]])
-  object = getFunction(name)
+  name = deparse(.call[[1]])
+  object = methods::getFunction(name)
 
   if(!rlang::is_closure(object)) {
     msg = paste0("The name '", name, "' does not match a closure.")
     stop(msg)
   }
 
-  args      = as.list(match.call(object, call)[-1])
+  args = as.list(match.call(object, .call)[-1])
   if(.force) args = lapply(args, eval, envir = parent.frame(n = 3))
 
   formals   = formals(object)
@@ -65,6 +66,9 @@ Q = function(call, quote = TRUE, .force = TRUE, .enclos = NULL) {
   for(arg in names(args)) formals[[arg]] = args[[arg]]
 
   formals(object) = formals
+
   if(!is.null(.enclos)) environment(object) = .enclos
+
   object
+
 }

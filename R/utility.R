@@ -42,10 +42,10 @@ alist2 = function(...) as.list(substitute((...)))[-1]
 #' @param input List. The input list to manipulate.
 #' @param ... Key value pairs to add to the list provided the key is not already
 #' used.
-#' @param .eager Logical; Should the \code{value}s be evaluated?
+#' @param .lazy Logical; Should the \code{value}s be evaluated?
 #' @return A modified list.
 
-add_elements = function(input, ..., .eager = TRUE) {
+add_elements = function(input, ..., .lazy = FALSE) {
   dots = if(.lazy) alist2(...) else list(...)
   names = names(dots)
   N = length(names)
@@ -65,7 +65,7 @@ lplot = function(...) {
   if(is.null(dots$type)) dots$type = "l"
   if(is.null(dots$bty)) dots$bty = "l"
   if(is.null(dots$lwd)) dots$lwd = 1.5
-  do_call(plot, dots)
+  do_call(graphics::plot, dots)
 }
 
 lapply2 = function(X, FUN, ...) {
@@ -79,7 +79,7 @@ lapply2 = function(X, FUN, ...) {
 
 }
 
-where <- function(name, env = parent.frame()) {
+where = function(name, env = parent.frame()) {
   if (identical(env, emptyenv())) stop("Can't find ", name, call. = FALSE)
   if (exists(name, envir = env, inherits = FALSE)) return(env)
   where(name, parent.env(env))

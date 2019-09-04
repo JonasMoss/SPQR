@@ -12,6 +12,7 @@
 #' function as if it was defined in the body of the work you're currently
 #' working with. And that is what this function does for you.
 #'
+#' @export
 #' @param call The function call to evaluate.
 #' @param env The environment where the function is defined. Defaults to
 #' \code{parent.frame}, which makes the defining environment equal to the
@@ -31,6 +32,7 @@
 #'    S(f()) # Evaluates 9
 
 S = function(call, env = parent.frame(), quote = TRUE) {
+
   call = if(quote) substitute(call) else call
 
   fn = deparse(call[[1]])
@@ -48,4 +50,5 @@ S = function(call, env = parent.frame(), quote = TRUE) {
   })
 
   eval(call, calling_env)
+
 }
