@@ -2,3 +2,5 @@
 
 export(Q)
 export(S)
+import("stats,")
+import(graphics)

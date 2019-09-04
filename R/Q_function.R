@@ -10,6 +10,7 @@
 #' its default arguments in its enclosing context, where the supplied values are
 #' unlikely to exist.
 #'
+#' @import stats, graphics
 #' @export
 #' @param .call A call object.
 #' @param .quote Logical; If \code{TRUE}, quotes the \code{call} argument.

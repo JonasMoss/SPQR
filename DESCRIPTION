@@ -7,6 +7,7 @@ Maintainer: Jonas Moss <jonas.gjertsen@gmail.com>
 Description: This package contains four functions S, P, Q, R that manipulates
    calls. 
 License: MIT + file LICENSE
+Depends: stats, graphics
 Imports: rlang,
          methods
 Encoding: UTF-8
